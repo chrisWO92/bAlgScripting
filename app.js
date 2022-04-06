@@ -371,3 +371,48 @@ createCodeElement(codeJSElement11.split("\n"), 'code-11', `col-11`);
 
 //Exercise 12
 
+function frankenSplice(arr1, arr2, n) {
+  let newArr = [];
+  if (arr2.length  == n){
+    newArr.push(...arr2, ...arr1);
+  }else{
+    newArr.push(...arr2.slice(0, n), ...arr1, ...arr2.slice(n, (arr2.length)))
+  }
+  return newArr;
+}
+
+
+const codeJSElement12 = `
+function frankenSplice(arr1, arr2, n) {
+  let newArr = [];
+  if (arr2.length  == n){
+    newArr.push(...arr2, ...arr1);
+  }else{
+    newArr.push(...arr2.slice(0, n), ...arr1, ...arr2.slice(n, (arr2.length)))
+  }
+  return newArr;
+}
+
+frankenSplice([1, 2, 3], [4, 5], 1);
+//${frankenSplice([1, 2, 3], [4, 5], 1)}
+`;
+
+createCodeElement(codeJSElement12.split("\n"), 'code-12', `col-12`);
+
+
+
+//Exercise 13
+
+function bouncer(arr) {
+  let newArr = [];
+  for (let i of arr){
+    if (!(i == false || i == null || i == 0 || i == "" || i == undefined || i == NaN)){
+      newArr.push(i);
+      console.log("--: ", newArr);
+    }
+  }
+  return newArr;
+}
+
+console.log(bouncer([7, "ate", "", false, 9]));
+console.log("Result: ", bouncer([false, null, 0, NaN, undefined, ""]));
