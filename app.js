@@ -328,3 +328,46 @@ booWho(null);
 
 createCodeElement(codeJSElement10.split("\n"), 'code-10', `col-10`);
 
+
+//Exercice 11
+
+function titleCase(str) {
+  let newStr = "";
+  let arrStr = str.split(" ");
+  for (let i of arrStr){
+    if (arrStr.indexOf(i) < (arrStr.length - 1)) {
+      newStr += i.charAt(0).toUpperCase() + i.slice(1).toLowerCase() + " ";
+    }
+    else if (arrStr.indexOf(i) == (arrStr.length - 1)){
+      newStr += i.charAt(0).toUpperCase() + i.slice(1).toLowerCase();
+    }
+    console.log(newStr, newStr.length);
+  }
+  return newStr;
+}
+
+const codeJSElement11 = `
+function titleCase(str) {
+  let newStr = "";
+  let arrStr = str.split(" ");
+  for (let i of arrStr){
+    if (arrStr.indexOf(i) < (arrStr.length - 1)) {
+      newStr += i.charAt(0).toUpperCase() + i.slice(1).toLowerCase() + " ";
+    }
+    else if (arrStr.indexOf(i) == (arrStr.length - 1)){
+      newStr += i.charAt(0).toUpperCase() + i.slice(1).toLowerCase();
+    }
+    console.log(newStr, newStr.length);
+  }
+  return newStr;
+}
+
+titleCase("I'm a little tea pot");
+//${titleCase("I'm a little tea pot")}
+`;
+
+createCodeElement(codeJSElement11.split("\n"), 'code-11', `col-11`);
+
+
+//Exercise 12
+
