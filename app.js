@@ -45,6 +45,7 @@ const createCodeElement2 = (codeJS, id, parentElement) => {
   currentDiv.appendChild(codeElement);
 }
 
+let codeList = [];
 
 //Exercise 1
 
@@ -65,6 +66,7 @@ convertToF(30);
 
 createCodeElement(codeJSElement1.split("\n"), 'code-1', `col-1`);
 
+codeList.push(codeJSElement1);
 
 
 //Exercise 2
