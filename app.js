@@ -341,7 +341,6 @@ function titleCase(str) {
     else if (arrStr.indexOf(i) == (arrStr.length - 1)){
       newStr += i.charAt(0).toUpperCase() + i.slice(1).toLowerCase();
     }
-    console.log(newStr, newStr.length);
   }
   return newStr;
 }
@@ -406,13 +405,143 @@ createCodeElement(codeJSElement12.split("\n"), 'code-12', `col-12`);
 function bouncer(arr) {
   let newArr = [];
   for (let i of arr){
-    if (!(i == false || i == null || i == 0 || i == "" || i == undefined || i == NaN)){
+    if ((i)){
       newArr.push(i);
-      console.log("--: ", newArr);
     }
   }
   return newArr;
 }
 
-console.log(bouncer([7, "ate", "", false, 9]));
-console.log("Result: ", bouncer([false, null, 0, NaN, undefined, ""]));
+const codeJSElement13 = `
+function bouncer(arr) {
+  let newArr = [];
+  for (let i of arr){
+    if ((i)){
+      newArr.push(i);
+    }
+  }
+  return newArr;
+}
+
+bouncer([7, "ate", "", false, 9]);
+//${bouncer([7, "ate", "", false, 9])}
+`;
+
+createCodeElement(codeJSElement13.split("\n"), 'code-13', `col-13`);
+
+
+
+//Exercise 14
+
+function getIndexToIns(arr, num) {
+  arr.push(num);
+  let sortedArr = arr.sort(function(a, b){return a - b});
+  return sortedArr.indexOf(num);
+}
+
+const codeJSElement14 = `
+function getIndexToIns(arr, num) {
+  arr.push(num);
+  let sortedArr = arr.sort(function(a, b){return a - b});
+  return sortedArr.indexOf(num);
+}
+
+getIndexToIns([40, 60, 70, 75, 90, 15, 3, 5], 50);
+//${getIndexToIns([40, 60, 70, 75, 90, 15, 3, 5], 50)}
+`;
+
+createCodeElement(codeJSElement14.split("\n"), 'code-14', `col-14`);
+
+
+//Exercise 15
+
+function mutation(arr) {
+  let output = true;
+  for (let i of arr[1].toLowerCase()){
+    if (arr[0].toLowerCase().indexOf(i) == -1){
+      output = false;
+      return output;
+    }
+  }
+  return output;
+}
+
+
+const codeJSElement15 = `
+function mutation(arr) {
+  let output = true;
+  for (let i of arr[1].toLowerCase()){
+    if (arr[0].toLowerCase().indexOf(i) == -1){
+      output = false;
+      return output;
+    }
+  }
+  return output;
+}
+
+mutation(["hello", "hey"]);
+//${mutation(["hello", "hey"])}
+`;
+
+createCodeElement(codeJSElement15.split("\n"), 'code-15', `col-15`);
+
+
+
+// Exercise 16
+
+function chunkArrayInGroups(arr, size) {
+  let globalCont = 0;
+  let localCont = 0;
+  let totalArr = [];
+  let subArr = [];
+  while (globalCont < arr.length){
+    while (localCont < size) {
+      if (arr[globalCont] === undefined){
+        totalArr.push(subArr);
+        return totalArr;
+      }else {
+        subArr.push(arr[globalCont]);
+        globalCont++;
+        localCont++;
+      }
+    }
+    totalArr.push(subArr);
+    localCont = 0;
+    subArr = [];
+  }
+  return totalArr; 
+}
+
+
+const codeJSElement16 = `
+function chunkArrayInGroups(arr, size) {
+  let globalCont = 0;
+  let localCont = 0;
+  let totalArr = [];
+  let subArr = [];
+  while (globalCont < arr.length){
+    while (localCont < size) {
+      if (arr[globalCont] === undefined){
+        totalArr.push(subArr);
+        return totalArr;
+      }else {
+        subArr.push(arr[globalCont]);
+        globalCont++;
+        localCont++;
+      }
+    }
+    totalArr.push(subArr);
+    localCont = 0;
+    subArr = [];
+  }
+  return totalArr; 
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+//${chunkArrayInGroups(["a", "b", "c", "d"], 2)}
+`;
+
+createCodeElement(codeJSElement16.split("\n"), 'code-16', `col-16`);
+
+
+
