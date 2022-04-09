@@ -1,0 +1,10 @@
+.row {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: 600ms;
+}
+
+.row.show {
+    transform: translateX(0);
+    opacity: 1; 
+}

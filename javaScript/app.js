@@ -555,26 +555,26 @@ const main = (htmlExercisesList, codeList) => {
 
 main(htmlExercisesList, codeList);
 
-const rows = document.querySelectorAll('.row');
-
-for (let i = 1; i < rows.length; i++){
-  rows[i].classList.add('d-none');
-}
+/* for (let i = 1; i < rows.length; i++){
+  rows[i].classList.add('show');
+} */
 
 const handlingIntersection = entries => {
-  for (const entry of entries){
-    if (entry.isIntersecting) {
-      entry.target.nextSibling.classList.remove('d-none');
-      
-    }
-  }
+  entries.forEach(entry => {
+    entry.target.classList.toggle('show', entry.isIntersecting);
+    //Para hacer que una ves aparezcan los elementos, no desaparezcan más, 
+    //se aplica el siguiente condicional if:
+    //if (entry.isIntersecting) observer.unobserve(entry.target);
+  });
 };
 
-const observer = new IntersectionObserver(handlingIntersection);
+const observer = new IntersectionObserver(handlingIntersection, {threshold: 0.4});
 
-for (const row of rows){
+const rows = document.querySelectorAll('.row');
+
+rows.forEach(row => {
   observer.observe(row);
-}
+})
 
 
 
