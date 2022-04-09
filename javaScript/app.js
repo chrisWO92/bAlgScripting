@@ -543,16 +543,39 @@ let htmlExercisesList = htmlExercises();
 let codeArr = chunkArrayInGroups(codeList, 3);
 let exArr = chunkArrayInGroups(htmlExercisesList, 3);
 
+createRowElement(0, exArr[0], codeArr[0]);
+
 const main = (htmlExercisesList, codeList) => {
   let exArr = chunkArrayInGroups(htmlExercisesList, 3);
   let codeArr = chunkArrayInGroups(codeList, 3);
-  for (let i = 0; i < exArr.length; i++) {
+  for (let i = 1; i < exArr.length; i++) {
     createRowElement(i, exArr[i], codeArr[i]);
   }
 };
 
 main(htmlExercisesList, codeList);
 
+const rows = document.querySelectorAll('.row');
+
+for (let i = 1; i < rows.length; i++){
+  rows[i].classList.add('d-none');
+}
+
+const handlingIntersection = entries => {
+  for (const entry of entries){
+    if (entry.isIntersecting) {
+      entry.target.nextSibling.classList.remove('d-none');
+      
+    }
+  }
+};
+
+const observer = new IntersectionObserver(handlingIntersection);
+
+for (const row of rows){
+  observer.observe(row);
+}
 
 
 
+ 
